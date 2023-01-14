@@ -1,0 +1,1 @@
+sudo prlimit --pid 1 --nofile=65536 --pid $$;

@@ -1,6 +1,6 @@
 import { Worker, NearAccount, parse } from "near-workspaces";
 import anyTest, { TestFn } from "ava";
-
+import path from "path";
 const test = anyTest as TestFn<{
 	worker: Worker;
 	accounts: Record<string, NearAccount>;
@@ -14,7 +14,10 @@ test.beforeEach(async (t) => {
 	const root = worker.rootAccount;
 	const contract = await root.createSubAccount("test-account");
 	// Get wasm file path from package.json test script in folder above
-	await contract.deploy("./out/main.wasm");
+
+	await contract.deploy(
+		path.join(__dirname, "..", "..", "out", "basic_contract.wasm")
+	);
 
 	await root.call(contract.accountId, "new", {
 		owner_id: root.accountId,
