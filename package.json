@@ -6,5 +6,9 @@
 		"packages/*",
 		"apps/*",
 		"services/*"
-	]
+	],
+	"scripts": {
+		"test:contract": "yarn workspace @echo-near/contracts test",
+		"build:contract": "yarn workspace @echo-near/contracts build"
+	}
 }
