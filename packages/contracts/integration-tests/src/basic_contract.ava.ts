@@ -77,7 +77,7 @@ test("STORAGE DEPOSIT SET AND REMOVE", async (t) => {
 		account_id: root.accountId,
 	});
 	await root.call(contract.accountId, "set_data", {
-		string: "Hello World",
+		string: "Hello World Test 2",
 	});
 	const balance3: any = await contract.view("storage_balance_of", {
 		account_id: root.accountId,
