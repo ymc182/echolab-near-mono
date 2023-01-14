@@ -1,0 +1,21 @@
+{
+	"name": "echo-contracts",
+	"version": "1.0.0",
+	"license": "(MIT AND Apache-2.0)",
+	"scripts": {
+		"deploy": "cd contract && ./deploy.sh",
+		"build": "npm run build:basic-contract",
+		"build:contract": "node compile.js",
+		"test": "npm run build:contract && npm run test:unit && npm run test:integration",
+		"test:unit": "cd contract && cargo test",
+		"test:integration": "npm run build:contract && cd integration-tests && npm test ",
+		"postinstall": "cd ./integration-tests && yarn && cd .."
+	},
+	"devDependencies": {
+		"near-cli": "^3.3.0"
+	},
+	"dependencies": {
+		"shelljs": "^0.8.5",
+		"toml": "^3.0.0"
+	}
+}
